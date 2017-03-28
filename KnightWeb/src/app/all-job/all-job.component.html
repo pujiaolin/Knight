@@ -1,0 +1,25 @@
+<h1>所有任务</h1>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>JobKey</th>
+                <th>组名</th>
+                <th>任务描述</th>
+                <th>类名</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let job of allJobs;let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{job.jobKey}}</td>
+                <td>{{job.jobGroup}}</td>
+                <td>{{job.description}}</td>
+                <td>{{job.jobClassName}}</td>
+              <td><a href="javascript: void(0);" (click)="deleteExecuteJob(job.jobGroup,job.jobClassName)">删除</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,38 @@
+<h1>添加任务调度</h1>
+<div class="container">
+  <form (ngSubmit)="saveExecuteJob(addJobForm);" #addJobForm="ngForm">
+    <div class="form-group row">
+      <label  class="col-sm-3 col-form-label">完整类名：</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" name="className" [(ngModel)]="executeJob.className"  placeholder="Class Name" #className="ngModel" required>
+        <div [hidden]="className.valid || className.pristine" class="alert alert-danger">ClassName is required.</div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">任务组名：</label>
+      <div class="col-sm-9">
+        <input class="form-control" name="jobGroup" [(ngModel)]="executeJob.jobGroup" placeholder="Job Group" #jobGroup="ngModel" required>
+        <div [hidden]="jobGroup.valid || jobGroup.pristine" class="alert alert-danger">jobGroup is required.</div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Cron表达式：</label>
+      <div class="col-sm-9">
+        <input class="form-control" name="cronExpression" [(ngModel)]="executeJob.cronExpression" placeholder="Cron Expression" #cronExpression="ngModel" required>
+        <div [hidden]="cronExpression.valid || cronExpression.pristine" class="alert alert-danger">cronExpression is required.</div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">任务描述：</label>
+      <div class="col-sm-9">
+        <input class="form-control" name="description" [(ngModel)]="executeJob.description" placeholder="Description" #description="ngModel" required>
+        <div [hidden]="description.valid || description.pristine" class="alert alert-danger">description is required.</div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="offset-sm-3 col-sm-9">
+        <button type="submit" class="btn btn-primary" [disabled]="!addJobForm.form.valid">添加</button>
+      </div>
+    </div>
+  </form>
+</div>

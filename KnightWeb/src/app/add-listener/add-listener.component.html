@@ -1,0 +1,31 @@
+<h1>添加任务监听</h1>
+<div class="container">
+  <form (ngSubmit)="saveJobListener(addListenerForm);" #addListenerForm="ngForm">
+    <div class="form-group row">
+      <label  class="col-sm-3 col-form-label">主类全名：</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" name="masterJobClassName" [(ngModel)]="jobListener.masterJobClassName" placeholder="Master Job Class Name" #masterJobClassName="ngModel" required>
+        <div [hidden]="masterJobClassName.valid || masterJobClassName.pristine" class="alert alert-danger">Master Job ClassName is required.</div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">次类全名：</label>
+      <div class="col-sm-9">
+        <input class="form-control" name="minorJobClassName" [(ngModel)]="jobListener.minorJobClassName" placeholder="Minor Job Class Name" #minorJobClassName="ngModel" required>
+        <div [hidden]="minorJobClassName.valid || minorJobClassName.pristine" class="alert alert-danger">Master Job ClassName is required.</div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">主类组名：</label>
+      <div class="col-sm-9">
+        <input class="form-control" name="masterJobGroup" [(ngModel)]="jobListener.masterJobGroup" placeholder="Master Job Group" #masterJobGroup="ngModel" required>
+        <div [hidden]="masterJobGroup.valid || masterJobGroup.pristine" class="alert alert-danger">Master Job ClassName is required.</div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="offset-sm-3 col-sm-9">
+        <button type="submit" class="btn btn-primary" [disabled]="!addListenerForm.form.valid">添加</button>
+      </div>
+    </div>
+  </form>
+</div>

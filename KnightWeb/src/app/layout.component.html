@@ -1,0 +1,41 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <a class="navbar-brand" href="javascript: void(0);">任务调度管理平台</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="javascript: void(0);">首页</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript: void(0);">设置</a>
+            </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="[ '/all-job' ]" routerLinkActive="active" >所有任务</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="[ '/add-job' ]" routerLinkActive="active" >添加任务</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="[ '/job-listener' ]" routerLinkActive="active" >任务监听</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="[ '/add-listener' ]" routerLinkActive="active" >添加任务监听</a>
+                </li>
+            </ul>
+        </nav>
+        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+</div>

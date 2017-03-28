@@ -1,0 +1,19 @@
+<h1>任务监听列表</h1>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>ListenerKey</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let listener of allListeners;let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{listener}}</td>
+            <td><a href="javascript: void(0);" (click)="deleteJobListener(listener)">删除</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
