@@ -13,4 +13,9 @@ public class Constant {
      * 任务默认分组
      */
     public static final String DEFAULT_GROUP = "DEFAULT";
+
+    /**
+     * job执行的异常监听名字
+     */
+    public static final String EXCEPTION_LISTENER = "EXCEPTION_LISTENER";
 }

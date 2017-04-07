@@ -4,6 +4,7 @@ import com.forpast.knight.quartz.Job1;
 import com.forpast.knight.quartz.Job2;
 import org.quartz.SimpleTrigger;
 import org.quartz.Trigger;
+import org.quartz.listeners.JobListenerSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -23,11 +24,13 @@ import java.text.ParseException;
 @Configuration
 public class SchedulerConfig {
 
+    private final JobExceptionListener jobExceptionListener;
     private final SchedulerManager schedulerManager;
 
     @Autowired
-    public SchedulerConfig(SchedulerManager schedulerManager) {
+    public SchedulerConfig(SchedulerManager schedulerManager, JobExceptionListener jobExceptionListener) {
         this.schedulerManager = schedulerManager;
+        this.jobExceptionListener = jobExceptionListener;
     }
 
     private Trigger[] assembleTriggers() throws ParseException {
@@ -37,10 +40,10 @@ public class SchedulerConfig {
         return new Trigger[]{job1Trigger,job2Trigger};
     }
 
-    private JobChainedJobListener[] assembleJobListeners() {
-        JobChainedJobListener jobChainingJobListener = new JobChainedJobListener("job1Listener");
-        jobChainingJobListener.addJobChainLink(schedulerManager.getJobKeyDefualt(Job1.class), Job2.class);
-        return new JobChainedJobListener[]{jobChainingJobListener};
+    private JobListenerSupport[] assembleJobListeners() {
+        //JobChainedJobListener jobChainingJobListener = new JobChainedJobListener("job1Listener");
+        //jobChainingJobListener.addJobChainLink(schedulerManager.getJobKeyDefualt(Job1.class), Job2.class);
+        return new JobListenerSupport[]{jobExceptionListener};
     }
 
     @Bean
@@ -48,7 +51,7 @@ public class SchedulerConfig {
         SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean();
         schedulerFactoryBean.setDataSource(dataSource);
         schedulerFactoryBean.setTriggers(assembleTriggers());
-        //schedulerFactoryBean.setGlobalJobListeners(assembleJobListeners());
+        schedulerFactoryBean.setGlobalJobListeners(assembleJobListeners());
         return schedulerFactoryBean;
     }
 }

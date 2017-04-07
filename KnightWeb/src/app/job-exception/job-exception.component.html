@@ -1,0 +1,24 @@
+<h1>任务异常列表</h1>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>JobKey</th>
+        <th>日期</th>
+        <th>异常内容</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let jobException of allJobException;let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{jobException.jobKey}}</td>
+        <td>{{jobException.occurredTime}}</td>
+        <td>{{jobException.exceptionContent}}</td>
+        <td><a href="javascript: void(0);" (click)="delete(jobException.id)">删除</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <page [(pagination)]="pagination"></page>
+</div>

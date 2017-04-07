@@ -12,22 +12,26 @@ import { JobListenerComponent } from './job-listener';
 import { NoContentComponent} from './no-content';
 import { AddJobComponent } from './add-job';
 import { AddListenerComponent } from './add-listener';
+import { JobExceptionComponent } from './job-exception';
+import { PageComponent } from './pagination';
 
 @NgModule({
   declarations: [
-      AppComponent,
-      LayoutComponent,
-      AllJobComponent,
-      JobListenerComponent,
-      NoContentComponent,
-      AddJobComponent,
-      AddListenerComponent
+    PageComponent,
+    AppComponent,
+    LayoutComponent,
+    AllJobComponent,
+    JobListenerComponent,
+    NoContentComponent,
+    AddJobComponent,
+    AddListenerComponent,
+    JobExceptionComponent
   ],
   imports: [
-      BrowserModule,
-      FormsModule,
-      HttpModule,
-      RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [],
   bootstrap: [AppComponent]
