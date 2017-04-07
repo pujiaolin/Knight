@@ -7,6 +7,7 @@ import { JobListenerComponent } from './job-listener';
 import { NoContentComponent} from './no-content';
 import { AddJobComponent } from './add-job';
 import { AddListenerComponent } from './add-listener';
+import { JobExceptionComponent } from './job-exception';
 
 export const ROUTES: Routes = [
     { path: '', component: AllJobComponent },
@@ -14,5 +15,6 @@ export const ROUTES: Routes = [
     { path: 'add-job', component: AddJobComponent },
     { path: 'job-listener', component: JobListenerComponent },
     { path: 'add-listener', component: AddListenerComponent },
+    { path: 'job-exception', component: JobExceptionComponent },
     { path: '**', component: NoContentComponent }
 ];

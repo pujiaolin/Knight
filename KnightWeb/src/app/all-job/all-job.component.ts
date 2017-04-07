@@ -2,7 +2,7 @@
  * Created by Medxi on 2017/3/21.
  */
 
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Http } from '@angular/http';
 import { KNIGHT_URL } from '../app.constant';
 import { Job } from './job';
@@ -14,7 +14,7 @@ import 'rxjs/add/operator/toPromise';
 })
 export class AllJobComponent implements OnInit {
 
-  constructor(private http: Http,private ref : ChangeDetectorRef) {
+  constructor(private http: Http) {
   }
 
   public allJobs:Job[] = [];

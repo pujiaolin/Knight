@@ -146,6 +146,14 @@ LOCK_NAME VARCHAR(40) NOT NULL,
 PRIMARY KEY (SCHED_NAME,LOCK_NAME))
 ENGINE=InnoDB;
 
+create table t_exception_job
+(
+	id int not null auto_increment primary key,
+	job_key varchar(200) not null,
+	occurred_time timestamp default CURRENT_TIMESTAMP not null,
+	exception_content text not null
+);
+
 CREATE INDEX IDX_QRTZ_J_REQ_RECOVERY ON QRTZ_JOB_DETAILS(SCHED_NAME,REQUESTS_RECOVERY);
 CREATE INDEX IDX_QRTZ_J_GRP ON QRTZ_JOB_DETAILS(SCHED_NAME,JOB_GROUP);
 
