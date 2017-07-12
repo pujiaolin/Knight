@@ -18,6 +18,7 @@ export class PageComponent implements DoCheck{
   public pageList:any[];
 
   private oldTotalItems:number = 0;
+  private oldCurrentPage:number = 1;
 
   public changeCurrentPage(item:any): void{
     if(typeof item === 'number'){
@@ -59,7 +60,7 @@ export class PageComponent implements DoCheck{
         this.pageList.push('...');
         this.pageList.push(this.pageNum);
         //右边没有'...'
-      }else if(this.pagination.currentPage < this.pageNum - offset - 1){
+      }else if(this.pagination.currentPage >= this.pageNum - offset - 1){
         this.pageList.push(1);
         this.pageList.push('...');
         for(let i=this.pagination.pageLength - 2;i >= 0 ;i--){
@@ -79,9 +80,10 @@ export class PageComponent implements DoCheck{
   }
 
   ngDoCheck():void {
-    if(this.pagination.totalItems != this.oldTotalItems){
+    if(this.pagination.totalItems != this.oldTotalItems || this.pagination.currentPage != this.oldCurrentPage){
       this.initPageList();
       this.oldTotalItems = this.pagination.totalItems;
+      this.oldCurrentPage = this.pagination.currentPage;
     }
 
     if(this.pagination.currentPage > this.pageNum){
